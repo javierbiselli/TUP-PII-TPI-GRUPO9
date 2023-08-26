@@ -19,6 +19,18 @@ def menu():
 
 
 def ejemplares_prestados(codigo_libro):
+    
+    # completar
+    return None
+
+
+def eliminar_ejemplar_libro():
+    # completar
+    return None
+
+
+def prestar_ejemplar_libro():
+    codigo_libro = input('Ingrese el código del libro: ')
     libro_encontrado = None
 
     for libro in libros:
@@ -34,30 +46,20 @@ def ejemplares_prestados(codigo_libro):
             print("no hay ejemplares disponibles para prestar")
         else:
             print("cantidad de ejemplares para préstamo:", int(
-                libro_encontrado["cant_ej_ad"]) - int(libro_encontrado["cant_ej_pr"]))
+            libro_encontrado["cant_ej_ad"]) - int(libro_encontrado["cant_ej_pr"]))
+            prestamo = input("¿Desea gestionar el préstamo de 1 unidad? (s/n): ")
+            if prestamo.lower() == "s":
+                libro['cant_ej_pr'] += 1
+                print('Cantidad restante de ejemplares disponibles para préstamo: ', int(libro['cant_ej_ad']) - int(libro['cant_ej_pr']))
+            else:
+                print('no se han hecho modificaciones...')
     else:
         print("El libro no existe.")
     return None
 
 
-
-def registrar_nuevo_libro():
-    nuevo_libro = l.nuevo_libro()
-    # completar
-    return None
-
-
-def eliminar_ejemplar_libro():
-    # completar
-    return None
-
-
-def prestar_ejemplar_libro():
-    # completar
-    return None
-
-
-def devolver_ejemplar_libro(codigo_libro):
+def devolver_ejemplar_libro():
+    codigo_libro = input('Ingrese el código del libro: ')
     libro_encontrado = None
     
     for libro in libros:
