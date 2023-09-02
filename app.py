@@ -4,6 +4,16 @@
 import os
 from bibloteca import *
 
+
+def menu():
+    print("1 - Gestionar Prestamo")
+    print("2 - Gestionar Devolucion")
+    print("3 - Registrar nuevo libro")
+    print("4 - Elimiar ejemplar")
+    print("5 - Mostrar ejemplares perstados")
+    print("6 - Salir")
+
+
 print("Bienvenido!")
 respuesta = ''
 
@@ -17,8 +27,8 @@ while respuesta != "salir":
         elif int(opt) == 2:
             devolver_ejemplar_libro()
         elif int(opt) == 3:
-            # completar
-            print("1")
+            registrar_nuevo_libro()
+
         elif int(opt) == 4:
             # completar
             print("2")
@@ -32,6 +42,6 @@ while respuesta != "salir":
     else:
         print("Ingrese una opción numérica")
 
-input("Presione cualquier tecla para continuar....")  # Pausa
+    input("Presione cualquier tecla para continuar....")  # Pausa
 
 print("Hasta luego!.")

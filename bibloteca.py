@@ -1,4 +1,5 @@
 import libro as l
+import cod_generator as cg
 
 # Crear una lista vacía para almacenar los libros
 libros = []
@@ -18,14 +19,57 @@ def menu():
     print("6 - Salir")
 
 
-def ejemplares_prestados(codigo_libro):
+def ejemplares_prestados():
+
+    return None
+
+
+def registrar_nuevo_libro():
+    # pedir al usuario losdatos del nuevo libro
+    titulo = input("Ingresar el título del nuevo libro: ")
+    autor = input("Ingresar el nombre del autor: ")
+    cant_ej_ad = int(input("Ingrese la cantidad de ejemplares adquiridos: "))
+
+    codigo_libro = cg.generar()  # a código_libro le genero el cod aleatorio
+
+    nuevo_libro = {
+        "cod": codigo_libro,
+        "cant_ej_ad": cant_ej_ad,
+        "cant_ej_pr": 0,
+        "titulo": titulo,
+        "autor": autor
+    }
+
+    libros.append(nuevo_libro)
+
+    print("Nuevo libro registrado:")
+    print("Código:", codigo_libro)
+    print("Título:", titulo)
+    print("Autor:", autor)
+    print("Cantidad de ejemplares adquiridos:", cant_ej_ad)
+    print("Cantidad de ejemplares prestados: 0")
+
+    """for libro in libros:
+        print(libros['titulo'])
+        break"""
     
-    # completar
+    
+
     return None
 
 
 def eliminar_ejemplar_libro():
-    # completar
+    codigo_libro = input('Ingrese el código del libro: ')
+    nueva_cantidad = int(
+        input("Ingrese la nueva cantidad de ejemplares disponibles"))
+
+    for libro in libros:
+        if codigo_libro == libro['cod']:
+            libro['cant_ej_ad'] == nueva_cantidad
+            break
+        print('La cantidad de ejemplares para el libro',
+            libro['titulo'], 'se ha actualizado a: ', libro['cant_ej_ad'])
+
     return None
 
 
@@ -61,7 +105,7 @@ def prestar_ejemplar_libro():
 def devolver_ejemplar_libro():
     codigo_libro = input('Ingrese el código del libro: ')
     libro_encontrado = None
-    
+
     for libro in libros:
         if libro['cod'] == codigo_libro:
             if int(libro['cant_ej_pr']) > 0:
