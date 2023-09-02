@@ -11,12 +11,14 @@ libros.append(l.libro3)
 
 
 def menu():
+    print("--------------------------------------")
     print("1 - Gestionar Prestamo")
     print("2 - Gestionar Devolucion")
     print("3 - Registrar nuevo libro")
     print("4 - Elimiar ejemplar")
     print("5 - Mostrar ejemplares perstados")
     print("6 - Salir")
+    print("--------------------------------------")
 
 
 def ejemplares_prestados():
@@ -42,13 +44,14 @@ def registrar_nuevo_libro():
 
     libros.append(nuevo_libro)
 
-    print("Nuevo libro registrado:")
-    print("Código:", codigo_libro)
-    print("Título:", titulo)
-    print("Autor:", autor)
-    print("Cantidad de ejemplares adquiridos:", cant_ej_ad)
-    print("Cantidad de ejemplares prestados: 0")
-
+    print("|--------------------------------------|")
+    print("|Nuevo libro registrado:               |")
+    print("|Código:                               |", codigo_libro)
+    print("|Título:                               |", titulo)
+    print("|Autor:                                |", autor)
+    print("|Cantidad de ejemplares adquiridos:    |", cant_ej_ad)
+    print("|Cantidad de ejemplares prestados:     |")
+    print("|--------------------------------------|")
     """for libro in libros:
         print(libros['titulo'])
         break"""
@@ -67,8 +70,10 @@ def eliminar_ejemplar_libro():
         if codigo_libro == libro['cod']:
             libro['cant_ej_ad'] == nueva_cantidad
             break
+        print("------------------------------------------------------------------------------------------")
         print('La cantidad de ejemplares para el libro',
             libro['titulo'], 'se ha actualizado a: ', libro['cant_ej_ad'])
+        print("------------------------------------------------------------------------------------------")
 
     return None
 
@@ -83,20 +88,24 @@ def prestar_ejemplar_libro():
             break
 
     if libro_encontrado:
+        print("--------------------------------------------------------")
         print("El código de libro ha sido encontrado:")
         print("Título:", libro_encontrado["titulo"])
         print("Autor:", libro_encontrado["autor"])
+        print("--------------------------------------------------------")
         if int(libro_encontrado["cant_ej_ad"]) - int(libro_encontrado["cant_ej_pr"]) <= 0:
             print("no hay ejemplares disponibles para prestar")
         else:
             print("cantidad de ejemplares para préstamo:", int(
             libro_encontrado["cant_ej_ad"]) - int(libro_encontrado["cant_ej_pr"]))
-            prestamo = input("¿Desea gestionar el préstamo de 1 unidad? (s/n): ")
+            prestamo = input("¿Desea gestionar el préstamo de 1 unidad? (s/n): \n")
             if prestamo.lower() == "s":
                 libro['cant_ej_pr'] += 1
                 print('Cantidad restante de ejemplares disponibles para préstamo: ', int(libro['cant_ej_ad']) - int(libro['cant_ej_pr']))
             else:
-                print('no se han hecho modificaciones...')
+                print("--------------------------------------------------------")
+                print("         ...NO SE HAN HECHO MODIFICACIONES...           ")
+                print("--------------------------------------------------------")
     else:
         print("El libro no existe.")
     return None
@@ -112,11 +121,13 @@ def devolver_ejemplar_libro():
                 libro_encontrado = libro
                 print("El código del libro es válido, y hay: ",
                       libro_encontrado["cant_ej_pr"], "ejemplares prestados")
-                devolucion = input("¿Desea gestionar la devolución? (s/n): ")
+                devolucion = input("¿Desea gestionar la devolución? (s/n): \n\n")
                 if devolucion.lower() == "s":
                     libro['cant_ej_pr'] = str(int(libro['cant_ej_pr']) - 1)
                     libro['cant_ej_ad'] = str(int(libro['cant_ej_ad']) + 1)
-                    print("Devolución gestionada con éxito.")
+                    print("--------------------------------------------------------")
+                    print("         ...Devolución gestionada con éxito...")
+                    print("--------------------------------------------------------")
                 break
             else:
                 print(
