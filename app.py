@@ -16,9 +16,8 @@ def menu():
     print("|--------------------------------------|\n")
 
 
-
 print("Bienvenido!")
-respuesta = ''
+respuesta = ""
 
 while respuesta != "salir":
     menu()
@@ -33,9 +32,8 @@ while respuesta != "salir":
             registrar_nuevo_libro()
         elif int(opt) == 4:
             eliminar_ejemplar_libro()
-            print("this feature is pending...")
         elif int(opt) == 5:
-           print("this feature is pending...")
+            ejemplares_prestados()
         elif int(opt) == 6:
             respuesta = "salir"
         else:
