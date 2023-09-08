@@ -26,9 +26,12 @@ def ejemplares_prestados():
 
     for libro in libros:
         if int(libro["cant_ej_pr"]) > 0:
+            print("--------------------------------------------------------------------------------")
             print(
                 f"Libro: {libro['titulo']}, Ejemplares prestados: {libro['cant_ej_pr']}"
             )
+            print("--------------------------------------------------------------------------------")
+
             libros_prestados = True
 
     if not libros_prestados:
@@ -55,17 +58,14 @@ def registrar_nuevo_libro():
 
     l.nuevo_libro(libros, libro)
 
-    print("|--------------------------------------|")
-    print("|Nuevo libro registrado:               |")
-    print("|Código:                               |", codigo_libro)
-    print("|Título:                               |", titulo)
-    print("|Autor:                                |", autor)
-    print("|Cantidad de ejemplares adquiridos:    |", cant_ej_ad)
-    print("|Cantidad de ejemplares prestados:     |")
-    print("|--------------------------------------|")
-    """for libro in libros:
-        print(libros['titulo'])
-        break"""
+    print("|-------------------------------------------|")
+    print("Nuevo libro registrado: ")
+    print("Código: ", codigo_libro)
+    print("Título: ", titulo)
+    print("Autor: ", autor)
+    print("Cantidad de ejemplares adquiridos: ", cant_ej_ad)
+    print("|-------------------------------------------|")
+
 
     return None
 
@@ -93,7 +93,10 @@ def eliminar_ejemplar_libro():
             )
             break
     else:
+        print("--------------------------------------------------------------")
         print("El libro que estas buscando no existe en nuestra base de datos")
+        print("--------------------------------------------------------------")
+
     return None
 
 
@@ -116,7 +119,7 @@ def prestar_ejemplar_libro():
             int(libro_encontrado["cant_ej_ad"]) - int(libro_encontrado["cant_ej_pr"])
             <= 0
         ):
-            print("no hay ejemplares disponibles para prestar")
+            print("no hay ejemplares disponibles para prestar...")
         else:
             print(
                 "cantidad de ejemplares para préstamo:",
@@ -166,5 +169,8 @@ def devolver_ejemplar_libro():
                 )
                 break
     else:
+        print("--------------------------------------------------------------")
         print("ERROR, No ha ingresado un código válido")
+        print("--------------------------------------------------------------")
+
     return None
